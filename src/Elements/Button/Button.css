@@ -1,0 +1,23 @@
+.btn {
+    align-self: center;
+    padding: 20px 80px 18px 80px;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    background: rgb(255, 85, 85);
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.btn:hover {
+    background: #E03A3A;
+}
+
+.btn:active {
+    transform: scale(1.025);
+}

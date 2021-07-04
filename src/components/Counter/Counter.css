@@ -1,0 +1,36 @@
+.counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.counter-container .number {
+    font-size: 2rem;
+    color: #333;
+    font-family: Verdana;
+    line-height: 1.75em;
+    text-align: center;
+    user-select: none;
+    margin: 0 20px;
+}
+
+.counter {
+    line-height: 1.75em;
+    outline: none;
+    background: transparent;
+    border-radius: 15px;
+    border: 2px solid rgb(255, 85, 85);
+    padding: 0 10px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.counter:nth-child(1) {
+    padding: 0 12px !important;
+}
+
+.counter:hover {
+    background: rgb(255, 85, 85);
+    color: #fff;
+}

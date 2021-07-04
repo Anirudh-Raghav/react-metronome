@@ -2,6 +2,10 @@ import { Component } from 'react';
 
 import './Metronome.css';
 
+import Counter from '../Counter/Counter';
+import Button from '../../Elements/Button/Button';
+import InputField from '../../Elements/InputField/InputField';
+
 class Metronome extends Component {
     constructor() {
         super();
@@ -12,7 +16,7 @@ class Metronome extends Component {
             bpm: 100,
             isPlaying: false,
             beatsPerMeasure: 4
-        }
+        };
 
         //CLASS VARIABLES
         this.click1 = new Audio("/Audio/click1.mp3");
@@ -28,11 +32,19 @@ class Metronome extends Component {
     };
 
     handleIncrement(e) {
-        this.setState({ ...this.state, beatsPerMeasure: (this.state.beatsPerMeasure + 1) });
+        if (this.state.isPlaying)
+            this.setState({ ...this.state, beatsPerMeasure: (this.state.beatsPerMeasure + 1), count: 0 });
+        else
+            this.setState({ ...this.state, beatsPerMeasure: (this.state.beatsPerMeasure + 1) });
     };
 
     handleDecrement(e) {
-        if (this.state.beatsPerMeasure > 2) this.setState({ ...this.state, beatsPerMeasure: (this.state.beatsPerMeasure - 1) });
+        if (this.state.beatsPerMeasure > 2) {
+            if (this.state.isPlaying)
+                this.setState({ ...this.state, beatsPerMeasure: (this.state.beatsPerMeasure - 1), count: 0 });
+            else
+                this.setState({ ...this.state, beatsPerMeasure: (this.state.beatsPerMeasure - 1) });
+        };
     };
 
     updateInterval() {
@@ -75,17 +87,16 @@ class Metronome extends Component {
             <div className="Metronome">
                 <h1>Metronome</h1>
                 <div className='count'>{this.state.bpm} BPM</div>
-                <input type="range" name="bpm" id="bpm" min="20" max="300" value={this.state.bpm} onChange={this.handleBpmChange} />
+
+                <div>
+                    <InputField currentState={this.state.bpm} onChange={this.handleBpmChange} />
+                </div>
 
                 <h4>Beats per measure</h4>
 
-                <div className="counter-container">
-                    <button className="counter" onClick={this.handleDecrement}>-</button>
-                    <span className="number">{this.state.beatsPerMeasure}</span>
-                    <button className="counter" onClick={this.handleIncrement}>+</button>
-                </div>
+                <Counter onIncrement={this.handleIncrement} onDecrement={this.handleDecrement} currentState={this.state.beatsPerMeasure} />
 
-                <button className="btn" onClick={this.startStop} >{this.state.isPlaying ? "Stop" : "Play"}</button>
+                <Button onClick={this.startStop} currentState={this.state.isPlaying} />
             </div>
         )
     };
