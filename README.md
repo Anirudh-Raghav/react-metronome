@@ -9,25 +9,25 @@ This is a simple react project that produces a (metronome) beat as per your inpu
 1. Clone the repository
 
 ```bash
-$git clone https://github.com/Anirudh-Raghav/react-metronome.git
+git clone https://github.com/Anirudh-Raghav/react-metronome.git
 ```
 
 2. `cd` into the folder and install the dependencies using npm
 
 ```bash
-$npm install
+npm install
 ```
 
 3. To start the project, run
 
 ```bash
-$npm start
+npm start
 ```
 
 Optional - To build the project, run
 
 ```bash
-$npm run build
+npm run build
 ```
 
 ## Project Status
